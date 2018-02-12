@@ -11,25 +11,30 @@ namespace WcfService1.Tests
     [TestClass()]
     public class Service1Tests
     {
+        
+       
         [TestMethod()]
         public void MyNameTest()
         {
-            using (var Client = new Service1Tests())
-            {
-                Assert.AreEqual("Nikolai", Client.MyNameTest());
-            }
+            var service1 = new Service1();
+
+            Assert.AreEqual("Nikolai", service1.MyName());
         }
 
         [TestMethod()]
         public void GetMyEmailTest()
         {
-            Assert.Fail();
+            var service1 = new Service1();
+
+            Assert.AreEqual("email", service1.GetMyEmail());
         }
 
         [TestMethod()]
         public void GetMyAdresseTest()
         {
-            Assert.Fail();
+            var service1 = new Service1();
+
+            Assert.AreEqual("adresse 1", service1.GetMyAdresse());
         }
     }
 }
