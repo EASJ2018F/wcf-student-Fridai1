@@ -12,19 +12,58 @@ namespace WcfService1
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string MyName()
+        private static List<Student> _studentList;
+
+        public Service1()
         {
-            return "Nikolai";
+            _studentList = new List<Student>();
+            this.AddStudent(1,"Hans","Dansk");
         }
 
-        public string GetMyEmail()
+        public static List<Student> StudentList
         {
-            return "email";
+            get
+            {
+                if (_studentList == null)
+                {
+                    _studentList = new List<Student>();
+                }
+                return _studentList;
+            }
         }
 
-        public string GetMyAdresse()
+        public void AddStudent(int StudentID, string name, string Class)
         {
-            return "adresse 1";
+            
+            StudentList.Add(new Student(StudentID, name, Class));
+        }
+
+        public Student FindStudent(int StudentId)
+        {
+            Student FoundStudent = StudentList.Find(x => x.GetStudentID.Equals(StudentId));
+
+            return FoundStudent;
+        }
+
+        public List<string> GetAllStudents()
+        {
+            List<string> list = new List<string>();
+            foreach (var s in StudentList)
+            {
+                list.Add(s.GetName);
+            }
+            return list;
+        }
+
+        public void RemoveStudent(int StudentId)
+        {
+            StudentList.Remove(FindStudent(StudentId));
+        }
+
+        public void EditStudent(int StudentID, string Name, string Class)
+        {
+            RemoveStudent(StudentID);
+            StudentList.Add(new Student(StudentID, Name, Class));
         }
     }
 }

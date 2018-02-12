@@ -14,11 +14,16 @@ namespace WcfService1
     {
 
         [OperationContract]
-        string MyName();
+        void AddStudent(int StudentID, string name, string Class);
         [OperationContract]
-        string GetMyEmail();
+        Student FindStudent(int Studentid);
         [OperationContract]
-        string GetMyAdresse();
+        List<string> GetAllStudents();
+        [OperationContract]
+        void RemoveStudent(int StudentId);
+        [OperationContract]
+        void EditStudent(int StudentID, string Name, string Class);
+
 
     }
 }
