@@ -17,10 +17,10 @@ namespace WcfService1
         public Service1()
         {
             _studentList = new List<Student>();
-            
-            AddStudent(1,"Hans","Dansk");
-            AddStudent(4, "Lars", "Mat");
-            AddStudent(3, "Bent", "Tysk");
+
+            _studentList.Add(new Student(1, "Hans", "Gym"));
+            _studentList.Add(new Student(2, "Lars", "Gym"));
+            _studentList.Add(new Student(3, "Bent", "Gym"));
         }
 
         //public static List<Student> StudentList
@@ -35,10 +35,10 @@ namespace WcfService1
         //    }
         //}
 
-        public void AddStudent(int StudentID, string name, string Class)
+        public void AddStudent(int studentID, string name, string Class)
         {
-
-            _studentList.Add(new Student(StudentID, name, Class));
+           
+            _studentList.Add(new Student(studentID, name, Class));
         }
 
         public Student FindStudent(int StudentId)

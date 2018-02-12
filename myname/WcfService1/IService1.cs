@@ -24,6 +24,8 @@ namespace WcfService1
         [OperationContract]
         void EditStudent(int StudentID, string Name, string Class);
 
+       
+
 
     }
 }

@@ -18,52 +18,52 @@ namespace WcfService1.Tests
         public void FindTest()
         {
             var service1 = new Service1();
-            service1.AddStudent(2,"Niko","Fag");
+            service1.AddStudent(22,"Niko","Fag");
 
-            Assert.AreEqual("Niko", service1.FindStudent(2).GetName);
+            Assert.AreEqual("Niko", service1.FindStudent(22).GetName);
         }
 
         [TestMethod()]
         public void FagTest()
         {
             var service1 = new Service1();
-            service1.AddStudent(2, "Niko", "Fag");
-            Assert.AreEqual("Fag", service1.FindStudent(2).GetClass);
+            service1.AddStudent(22, "Niko", "Fag");
+            Assert.AreEqual("Fag", service1.FindStudent(22).GetClass);
         }
 
         [TestMethod()]
         public void IdTest()
         {
             var service1 = new Service1();
-            service1.AddStudent(2, "Niko", "Fag");
-            Assert.AreEqual(2, service1.FindStudent(2).GetStudentID);
+            service1.AddStudent(22, "Niko", "Fag");
+            Assert.AreEqual(22, service1.FindStudent(22).GetStudentID);
         }
 
         [TestMethod()]
         public void EditTestName()
         {
             var service1 = new Service1();
-            service1.AddStudent(2, "Niko", "Fag");
-            service1.EditStudent(2, "Lars", "Gym");
-            Assert.AreEqual("Lars", service1.FindStudent(2).GetName);
+            service1.AddStudent(22, "Niko", "Fag");
+            service1.EditStudent(22, "Lars", "Gym");
+            Assert.AreEqual("Lars", service1.FindStudent(22).GetName);
         }
 
         [TestMethod()]
         public void EditTestClass()
         {
             var service1 = new Service1();
-            service1.AddStudent(2, "Niko", "Fag");
-            service1.EditStudent(2, "Lars", "Gym");
-            Assert.AreEqual("Gym", service1.FindStudent(2).GetClass);
+            service1.AddStudent(22, "Niko", "Fag");
+            service1.EditStudent(22, "Lars", "Gym");
+            Assert.AreEqual("Gym", service1.FindStudent(22).GetClass);
         }
         [TestMethod()]
         public void RemoveTest()
         {
             var service1 = new Service1();
-            service1.AddStudent(2, "Niko", "Fag");
-            service1.RemoveStudent(2);
+            service1.AddStudent(22, "Niko", "Fag");
+            service1.RemoveStudent(22);
            
-            Assert.IsNull(service1.FindStudent(2));
+            Assert.IsNull(service1.FindStudent(22));
         }
         [TestMethod()]
         public void GetAllTest()
@@ -73,13 +73,37 @@ namespace WcfService1.Tests
             List<Student> name = new List<Student>();
             List<Student> actual = service1.GetAllStudents();
 
-            name.Add(new Student(1, "Hans", "Dansk"));
-            name.Add(new Student(4, "Lars", "Mat"));
-            name.Add(new Student(3, "Bent", "Tysk"));
-            
-            
+            List<Student> expected = new List<Student>()
+            {
+                new Student()
+                {
+                    GetStudentID = 1,
+                    GetName = "Hans",
+                    GetClass = "Gym"
+                },
+                new Student()
+                {
+                    GetStudentID = 2,
+                    GetName = "Lars",
+                    GetClass = "Gym"
+                },
+                new Student()
+                {
+                    GetStudentID = 3,
+                    GetName = "Bent",
+                    GetClass = "Gym"
+                }
+            };
 
-            CollectionAssert.AreEqual(name, actual);
+            StudentListComparer comparer = new StudentListComparer();
+
+
+
+
+            CollectionAssert.AreEqual(expected, actual, comparer);
+            
+           // CollectionAssert.AreEquivalent(name, actual);
+
         }
     }
 }
