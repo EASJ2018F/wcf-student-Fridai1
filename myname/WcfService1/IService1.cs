@@ -15,6 +15,10 @@ namespace WcfService1
 
         [OperationContract]
         string MyName();
+        [OperationContract]
+        string GetMyEmail();
+        [OperationContract]
+        string GetMyAdresse();
 
     }
 }

@@ -16,5 +16,15 @@ namespace WcfService1
         {
             return "Nikolai";
         }
+
+        public string GetMyEmail()
+        {
+            return "email";
+        }
+
+        public string GetMyAdresse()
+        {
+            return "adresse 1";
+        }
     }
 }
