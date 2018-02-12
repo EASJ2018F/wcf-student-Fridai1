@@ -20,16 +20,19 @@
         public int GetStudentID
         {
             get => _studentID;
+            set => _studentID = value;
         }
 
         public string GetName
         {
             get => _name;
+            set => _name = value;
         }
 
         public string GetClass
         {
             get => _ClassName;
+            set => _ClassName = value;
         }
 
 

@@ -18,7 +18,7 @@ namespace WcfService1
         [OperationContract]
         Student FindStudent(int Studentid);
         [OperationContract]
-        List<string> GetAllStudents();
+        List<Student> GetAllStudents();
         [OperationContract]
         void RemoveStudent(int StudentId);
         [OperationContract]

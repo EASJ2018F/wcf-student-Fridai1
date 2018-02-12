@@ -69,13 +69,17 @@ namespace WcfService1.Tests
         public void GetAllTest()
         {
             var service1 = new Service1();
-            service1.AddStudent(2, "Niko", "Fag");
 
-            List<string> name = new List<string>();
-            name.Add("Hans");
-            name.Add("Niko");
+            List<Student> name = new List<Student>();
+            List<Student> actual = service1.GetAllStudents();
 
-            CollectionAssert.AreEqual(name, service1.GetAllStudents());
+            name.Add(new Student(1, "Hans", "Dansk"));
+            name.Add(new Student(4, "Lars", "Mat"));
+            name.Add(new Student(3, "Bent", "Tysk"));
+            
+            
+
+            CollectionAssert.AreEqual(name, actual);
         }
     }
 }
